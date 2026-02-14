@@ -25,7 +25,7 @@ export const PROFILE = {
   phone: "+918955531225",
   whatsapp: "https://wa.me/918955531225",
   github: "https://github.com/kushagra67",
-  linkedin: "https://linkedin.com/in/kushagra",
+  linkedin: "https://www.linkedin.com/in/kushagra-singhal20/",
   resumePath: "/Kushagra_Resume.pdf",
 };
 
@@ -390,7 +390,7 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   PHONE        +91 8955531225
   WHATSAPP     wa.me/918955531225
   GITHUB       github.com/kushagra67
-  LINKEDIN     linkedin.com/in/kushagra
+  LINKEDIN     linkedin.com/in/kushagra-singhal20
 
 ┌──────────────────────────────────────────────┐
 │  STATUS: AVAILABLE FOR HIGH-IMPACT ROLES     │
@@ -499,7 +499,7 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   Phone:    +91 8955531225
   WhatsApp: wa.me/918955531225
   GitHub:   github.com/kushagra67
-  LinkedIn: linkedin.com/in/kushagra
+  LinkedIn: linkedin.com/in/kushagra-singhal20
   Resume:   /Kushagra_Resume.pdf
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 };

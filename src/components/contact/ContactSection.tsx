@@ -75,7 +75,7 @@ export function ContactSection() {
             />
             <ContactRow
               label="LINKEDIN"
-              value="linkedin.com/in/kushagra"
+              value="linkedin.com/in/kushagra-singhal20"
               href={PROFILE.linkedin}
               color="#f000ff"
               onCopy={() => copyToClipboard(PROFILE.linkedin, "LinkedIn")}

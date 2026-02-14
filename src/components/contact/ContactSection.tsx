@@ -67,7 +67,7 @@ export function ContactSection() {
             />
             <ContactRow
               label="GITHUB"
-              value="github.com/kushagra"
+              value="github.com/kushagra67"
               href={PROFILE.github}
               color="#e0e8f0"
               onCopy={() => copyToClipboard(PROFILE.github, "GitHub")}

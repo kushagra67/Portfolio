@@ -24,7 +24,7 @@ export const PROFILE = {
   email: "singhalkushagra03@gmail.com",
   phone: "+918955531225",
   whatsapp: "https://wa.me/918955531225",
-  github: "https://github.com/kushagra",
+  github: "https://github.com/kushagra67",
   linkedin: "https://linkedin.com/in/kushagra",
   resumePath: "/Kushagra_Resume.pdf",
 };
@@ -389,7 +389,7 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   EMAIL        singhalkushagra03@gmail.com
   PHONE        +91 8955531225
   WHATSAPP     wa.me/918955531225
-  GITHUB       github.com/kushagra
+  GITHUB       github.com/kushagra67
   LINKEDIN     linkedin.com/in/kushagra
 
 ┌──────────────────────────────────────────────┐
@@ -498,7 +498,7 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   Email:    singhalkushagra03@gmail.com
   Phone:    +91 8955531225
   WhatsApp: wa.me/918955531225
-  GitHub:   github.com/kushagra
+  GitHub:   github.com/kushagra67
   LinkedIn: linkedin.com/in/kushagra
   Resume:   /Kushagra_Resume.pdf
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,

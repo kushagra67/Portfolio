@@ -20,7 +20,7 @@ function ParticleField() {
     if (!ctx) return;
 
     let raf: number;
-    const N = 25;
+    const N = 15;
     const ps: { x: number; y: number; vx: number; vy: number; r: number; a: number }[] = [];
 
     const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
@@ -244,19 +244,16 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
   return (
     <div className={`fixed inset-0 z-50 bg-background overflow-hidden ${exiting ? "animate-cinematic-zoom" : ""}`}>
 
-      {/* Layer 1: Animated grid — very slow drift */}
-      <div className="absolute inset-0 bg-grid-drift opacity-12" />
+      {/* Layer 1: Subtle static grid */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
       {/* Layer 2: Particle field with mouse parallax */}
       <ParticleField />
 
-      {/* Scanline overlay — very subtle */}
+      {/* Scanline overlay — CSS only, GPU composited */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan/15 to-transparent"
-          initial={{ top: "-2%" }}
-          animate={{ top: "102%" }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+        <div
+          className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan/10 to-transparent animate-scanline"
         />
       </div>
 

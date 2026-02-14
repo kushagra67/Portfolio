@@ -165,15 +165,15 @@ interface ContactRowProps {
 
 function ContactRow({ label, value, href, color, onCopy, ariaLabel }: ContactRowProps) {
   return (
-    <div className="flex items-center justify-between py-2 group">
-      <span className="text-[10px] font-mono tracking-widest text-foreground/30 shrink-0">{label}</span>
-      <div className="flex items-center gap-2">
+    <div className="flex items-start gap-3 py-2 group">
+      <span className="text-[10px] font-mono tracking-widest text-foreground/30 shrink-0 w-20 pt-0.5">{label}</span>
+      <div className="flex items-center gap-2 min-w-0 flex-1">
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={ariaLabel}
-          className="text-sm font-mono hover:underline transition-colors truncate max-w-[180px] sm:max-w-none"
+          className="text-xs font-mono hover:underline transition-colors truncate"
           style={{ color }}
         >
           {value}
@@ -182,7 +182,7 @@ function ContactRow({ label, value, href, color, onCopy, ariaLabel }: ContactRow
           <button
             onClick={onCopy}
             aria-label={`Copy ${label} to clipboard`}
-            className="text-[10px] font-mono text-foreground/20 hover:text-foreground/60 transition-colors px-1.5 py-0.5 border border-transparent hover:border-border-dim cursor-pointer"
+            className="text-[10px] font-mono text-foreground/20 hover:text-foreground/60 transition-colors px-1.5 py-0.5 border border-transparent hover:border-border-dim cursor-pointer shrink-0"
             title="Copy"
           >
             ⎘

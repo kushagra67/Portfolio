@@ -1,26 +1,295 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #060b11;
+  --foreground: #c8d6e5;
+  --cyan: #00d4ff;
+  --magenta: #a855f7;
+  --green: #22c55e;
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --surface: #0a1018;
+  --surface-light: #111a26;
+  --border-dim: #162030;
+  --border-glow: #00d4ff22;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-cyan: var(--cyan);
+  --color-magenta: var(--magenta);
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --color-amber: var(--amber);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-border-dim: var(--border-dim);
+  --color-border-glow: var(--border-glow);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #162030 transparent;
+}
+
+*::-webkit-scrollbar { width: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #162030; border-radius: 3px; }
+
+::selection {
+  background: #00d4ff25;
+  color: #00d4ff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Cursor-reactive light gradient ── */
+.cursor-light {
+  background: radial-gradient(
+    800px circle at var(--cursor-x) var(--cursor-y),
+    rgba(0, 212, 255, 0.025),
+    transparent 40%
+  );
+}
+
+/* ── Keyframes ── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes border-trace {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+/* ── Spin (GPU-composited rotation) ── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Animation utilities ── */
+.animate-scanline { animation: scanline 10s linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
+.animate-float { animation: float 8s ease-in-out infinite; }
+
+/* ── Glow utilities — subtle, not neon ── */
+.glow-cyan { text-shadow: 0 0 20px #00d4ff44; }
+.glow-magenta { text-shadow: 0 0 20px #a855f744; }
+.glow-green { text-shadow: 0 0 20px #22c55e44; }
+.glow-amber { text-shadow: 0 0 20px #f59e0b44; }
+
+.box-glow-cyan { box-shadow: 0 0 30px #00d4ff11, inset 0 0 30px #00d4ff06; }
+
+/* ── HUD corner decorations ── */
+.hud-corner {
+  position: relative;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #00d4ff22;
+  transition: border-color 0.3s;
+}
+
+.hud-corner::before {
+  top: 0; left: 0;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.hud-corner::after {
+  bottom: 0; right: 0;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.hud-corner:hover::before,
+.hud-corner:hover::after {
+  border-color: #00d4ff44;
+}
+
+/* ── Background patterns ── */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-grid-drift {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-drift 30s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 48px 48px, 48px 48px; }
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Animated border trace ── */
+.border-trace {
+  background: linear-gradient(90deg, transparent, #00d4ff33, transparent);
+  background-size: 200% 100%;
+  animation: border-trace 4s linear infinite;
+}
+
+/* ── Minimal glitch reveal ── */
+@keyframes glitch-reveal {
+  0% { clip-path: inset(0 100% 0 0); filter: hue-rotate(0deg); }
+  30% { clip-path: inset(0 60% 0 0); filter: hue-rotate(10deg); }
+  32% { clip-path: inset(30% 55% 40% 0); transform: translate(2px, -1px); }
+  34% { clip-path: inset(0 50% 0 0); transform: translate(0); }
+  60% { clip-path: inset(0 20% 0 0); filter: hue-rotate(0deg); }
+  62% { clip-path: inset(50% 18% 20% 0); transform: translate(-1px, 1px); }
+  64% { clip-path: inset(0 15% 0 0); transform: translate(0); }
+  100% { clip-path: inset(0 0 0 0); filter: hue-rotate(0deg); }
+}
+
+.animate-glitch-reveal {
+  animation: glitch-reveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ── Micro glitch on hover (minimal) ── */
+@keyframes micro-glitch {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(1px, 0); }
+  50% { transform: translate(-1px, 0); }
+  75% { transform: translate(0, 1px); }
+}
+
+.hover-glitch:hover {
+  animation: micro-glitch 0.15s linear;
+}
+
+/* ── Visual pulse (easter egg) ── */
+@keyframes visual-pulse {
+  0% { box-shadow: inset 0 0 0 0 rgba(0, 212, 255, 0); }
+  30% { box-shadow: inset 0 0 120px 40px rgba(0, 212, 255, 0.08); }
+  100% { box-shadow: inset 0 0 0 0 rgba(0, 212, 255, 0); }
+}
+
+.animate-visual-pulse {
+  animation: visual-pulse 1.5s ease-out;
+}
+
+/* ── Cinematic zoom ── */
+@keyframes cinematic-zoom {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.7; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+.animate-cinematic-zoom {
+  animation: cinematic-zoom 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Button light sweep on hover ── */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.06), transparent);
+  transition: none;
+}
+
+.btn-sweep:hover::after {
+  animation: sweep-across 0.5s ease-out forwards;
+}
+
+@keyframes sweep-across {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ── Breathing glow (volumetric light) ── */
+@keyframes breathe {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* ── Architect mode theme shift ── */
+.architect-mode {
+  --cyan: #b388ff;
+  --border-glow: #b388ff22;
+}
+
+.architect-mode .cursor-light {
+  background: radial-gradient(
+    800px circle at var(--cursor-x) var(--cursor-y),
+    rgba(179, 136, 255, 0.025),
+    transparent 40%
+  );
+}
+
+.architect-mode ::selection {
+  background: #b388ff25;
+  color: #b388ff;
+}
+
+/* ── Section transitions ── */
+.section-enter {
+  animation: fade-up 0.4s ease-out;
 }

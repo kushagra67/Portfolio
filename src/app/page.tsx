@@ -7,7 +7,6 @@ import { BootSequence } from "@/components/landing/BootSequence";
 import { ScanLine } from "@/components/ui/ScanLine";
 import { AudioToggle } from "@/components/ui/AudioToggle";
 import { HudOverlay } from "@/components/ui/HudOverlay";
-import { ViewModeToggle } from "@/components/ui/ViewModeToggle";
 import { SystemStatusBar } from "@/components/ui/SystemStatusBar";
 import { StatsBar } from "@/components/dashboard/StatsBar";
 import { NavigationHud } from "@/components/dashboard/NavigationHud";
@@ -240,12 +239,7 @@ export default function Home() {
 
       {/* Navigation + Mode Toggle */}
       <div className="sticky top-0 z-30">
-        <div className="relative">
-          <NavigationHud />
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden md:block">
-            <ViewModeToggle />
-          </div>
-        </div>
+        <NavigationHud />
       </div>
 
       {/* Main content */}

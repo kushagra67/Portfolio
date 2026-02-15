@@ -68,13 +68,7 @@ export function Timeline() {
                 <HudFrame glowColor={color} className="p-4" animate={false}>
                   <div className="flex items-start justify-between mb-2">
                     <div>
-                      <span
-                        className="text-[10px] font-mono tracking-[0.2em] uppercase"
-                        style={{ color: `${color}88` }}
-                      >
-                        {event.year}
-                      </span>
-                      <h3 className="text-sm font-mono font-bold text-foreground mt-0.5">
+                      <h3 className="text-sm font-mono font-bold text-foreground">
                         {event.title}
                       </h3>
                     </div>

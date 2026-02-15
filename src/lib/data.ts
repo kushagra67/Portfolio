@@ -282,46 +282,46 @@ export interface TimelineEvent {
 
 export const TIMELINE: TimelineEvent[] = [
   {
-    year: "2023",
-    title: "Internship — Nineleaps",
-    description: "Built ETL pipelines processing 1M+ rows, BI dashboards, CI/CD pipelines, and an LLM agent for Git triage.",
-    level: 15,
-    type: "work",
+    year: "",
+    title: "PravahVedam — Fleet Intelligence",
+    description: "Deployed 11 AI agents for fleet intelligence: V2V, DMS, predictive maintenance, route optimization.",
+    level: 42,
+    type: "milestone",
   },
   {
-    year: "2024 Q1",
-    title: "Vebot Launched",
-    description: "Deployed multi-platform conversational AI across WhatsApp, Telegram, and Discord.",
-    level: 22,
-    type: "project",
-  },
-  {
-    year: "2024 Q2",
-    title: "ShikshaVedam Initiated",
-    description: "Architected AI-powered ERP with Virtual Principal, RAG pipelines, and LangGraph orchestration.",
-    level: 30,
-    type: "project",
-  },
-  {
-    year: "2024 Q3",
-    title: "PracharVedam Deployed",
-    description: "Shipped 6-microservice AI ad generation platform with real-time ClickHouse analytics.",
-    level: 36,
-    type: "project",
-  },
-  {
-    year: "2024 Q4",
+    year: "",
     title: "AstraVedam — Defense Systems",
     description: "Built YOLOv10 drone detection with geofencing. Classified-grade threat response system.",
     level: 40,
     type: "milestone",
   },
   {
-    year: "2025",
-    title: "PravahVedam — Fleet Intelligence",
-    description: "Deployed 11 AI agents for fleet intelligence: V2V, DMS, predictive maintenance, route optimization.",
-    level: 42,
-    type: "milestone",
+    year: "",
+    title: "PracharVedam Deployed",
+    description: "Shipped 6-microservice AI ad generation platform with real-time ClickHouse analytics.",
+    level: 36,
+    type: "project",
+  },
+  {
+    year: "",
+    title: "ShikshaVedam Initiated",
+    description: "Architected AI-powered ERP with Virtual Principal, RAG pipelines, and LangGraph orchestration.",
+    level: 30,
+    type: "project",
+  },
+  {
+    year: "",
+    title: "Vebot Launched",
+    description: "Deployed multi-platform conversational AI across WhatsApp, Telegram, and Discord.",
+    level: 22,
+    type: "project",
+  },
+  {
+    year: "",
+    title: "Internship — Nineleaps",
+    description: "Built ETL pipelines processing 1M+ rows, BI dashboards, CI/CD pipelines, and an LLM agent for Git triage.",
+    level: 15,
+    type: "work",
   },
 ];
 
@@ -485,12 +485,12 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
 
   "timeline": `> CAREER PROGRESSION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  2023     Internship @ Nineleaps     LVL 15
-  2024 Q1  Vebot Launched             LVL 22
-  2024 Q2  ShikshaVedam Initiated     LVL 30
-  2024 Q3  PracharVedam Deployed      LVL 36
-  2024 Q4  AstraVedam — Defense       LVL 40
-  2025     PravahVedam — Fleet Intel  LVL 42
+  PravahVedam — Fleet Intel       LVL 42
+  AstraVedam — Defense            LVL 40
+  PracharVedam Deployed           LVL 36
+  ShikshaVedam Initiated          LVL 30
+  Vebot Launched                  LVL 22
+  Internship @ Nineleaps          LVL 15
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 
   "contact": `> SECURE CHANNEL

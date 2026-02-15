@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useSimulation } from "@/store/useSimulation";
 
 interface MetricItem {
   value: number;
@@ -9,13 +10,22 @@ interface MetricItem {
   label: string;
 }
 
-const IMPACT_METRICS: MetricItem[] = [
+const RECRUITER_METRICS: MetricItem[] = [
   { value: 5, suffix: "", label: "Production Systems" },
   { value: 11, suffix: "", label: "AI Agents" },
   { value: 6, suffix: "", label: "Microservices" },
   { value: 1, suffix: "M+", label: "Data Rows" },
   { value: 35, suffix: "%", label: "Perf Optimization" },
   { value: 95, suffix: "%", label: "Automation Precision" },
+];
+
+const ENGINEER_METRICS: MetricItem[] = [
+  { value: 12, suffix: "+", label: "Python / FastAPI" },
+  { value: 11, suffix: "", label: "LangGraph Agents" },
+  { value: 4, suffix: "", label: "RAG Pipelines" },
+  { value: 6, suffix: "", label: "Docker / K8s" },
+  { value: 3, suffix: "", label: "Kafka Streams" },
+  { value: 2, suffix: "", label: "Edge ML Models" },
 ];
 
 function useCountUp(target: number, duration: number = 1.8) {
@@ -51,6 +61,9 @@ function useCountUp(target: number, duration: number = 1.8) {
 }
 
 export function StatsBar() {
+  const viewMode = useSimulation((s) => s.viewMode);
+  const metrics = viewMode === "engineer" ? ENGINEER_METRICS : RECRUITER_METRICS;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -58,16 +71,25 @@ export function StatsBar() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="border-b border-border-dim bg-surface/30"
     >
-      <div className="max-w-5xl mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 py-6 px-6">
-        {IMPACT_METRICS.map((metric, i) => (
-          <MetricCell key={metric.label} metric={metric} delay={i * 0.06} />
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={viewMode}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.25 }}
+          className="max-w-5xl mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 py-6 px-6"
+        >
+          {metrics.map((metric, i) => (
+            <MetricCell key={metric.label} metric={metric} delay={i * 0.06} isEngineer={viewMode === "engineer"} />
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }
 
-function MetricCell({ metric, delay }: { metric: MetricItem; delay: number }) {
+function MetricCell({ metric, delay, isEngineer }: { metric: MetricItem; delay: number; isEngineer: boolean }) {
   const { count, ref } = useCountUp(metric.value);
 
   return (
@@ -78,7 +100,7 @@ function MetricCell({ metric, delay }: { metric: MetricItem; delay: number }) {
       transition={{ delay: delay + 0.3, duration: 0.4 }}
       className="flex flex-col items-center gap-1"
     >
-      <span className="text-xl sm:text-2xl font-mono font-bold text-cyan tabular-nums tracking-tight">
+      <span className={`text-xl sm:text-2xl font-mono font-bold tabular-nums tracking-tight ${isEngineer ? "text-green" : "text-cyan"}`}>
         {count.toLocaleString()}{metric.suffix}
       </span>
       <span className="text-[10px] font-mono tracking-[0.15em] text-foreground/30 uppercase text-center leading-tight">

@@ -116,7 +116,8 @@ export default function Home() {
   }
 
   return (
-    <div className={`min-h-screen bg-background cursor-light pb-8 ${easterEggPulse ? "animate-visual-pulse" : ""} ${architectMode ? "architect-mode" : ""}`}>
+    <div className={`min-h-screen bg-background cursor-light pb-8 ${easterEggPulse ? "animate-visual-pulse" : ""} ${architectMode ? "architect-mode" : ""} ${viewMode === "engineer" ? "engineer-mode" : ""}`}>
+      {viewMode === "engineer" && <div className="fixed inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none z-0" />}
       <ScanLine />
       <AudioToggle />
       <HudOverlay />
@@ -179,22 +180,41 @@ export default function Home() {
             {PROFILE.name}
           </motion.h1>
 
-          {/* Stage 4: Subtitle + meta */}
+          {/* Stage 4: Subtitle + meta — mode-aware */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.0, duration: 0.6 }}
           >
-            <p className="text-base sm:text-lg text-foreground/40 leading-relaxed mb-8 max-w-xl mx-auto">
-              Building production AI systems across EdTech, AdTech, Fleet Intelligence, Defense &amp; Conversational AI.
-            </p>
-            <div className="flex items-center justify-center gap-6 text-[11px] font-mono tracking-wider text-foreground/25">
-              <span>{PROFILE.location}</span>
-              <span className="w-px h-3 bg-border-dim" />
-              <span className="text-cyan/60">5 production systems</span>
-              <span className="w-px h-3 bg-border-dim" />
-              <span className="text-cyan/60">11 AI agents</span>
-            </div>
+            <AnimatePresence mode="wait">
+              {viewMode === "engineer" ? (
+                <motion.div key="eng" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
+                  <p className="text-sm sm:text-base font-mono text-green/40 leading-relaxed mb-8 max-w-xl mx-auto tracking-wide">
+                    Python · FastAPI · LangGraph · RAG · YOLOv10 · Kafka · ClickHouse · Docker · K8s
+                  </p>
+                  <div className="flex items-center justify-center gap-6 text-[11px] font-mono tracking-wider text-foreground/25">
+                    <span>{PROFILE.location}</span>
+                    <span className="w-px h-3 bg-border-dim" />
+                    <span className="text-green/50">distributed systems</span>
+                    <span className="w-px h-3 bg-border-dim" />
+                    <span className="text-green/50">real-time ML</span>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div key="rec" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
+                  <p className="text-base sm:text-lg text-foreground/40 leading-relaxed mb-8 max-w-xl mx-auto">
+                    Building production AI systems across EdTech, AdTech, Fleet Intelligence, Defense &amp; Conversational AI.
+                  </p>
+                  <div className="flex items-center justify-center gap-6 text-[11px] font-mono tracking-wider text-foreground/25">
+                    <span>{PROFILE.location}</span>
+                    <span className="w-px h-3 bg-border-dim" />
+                    <span className="text-cyan/60">5 production systems</span>
+                    <span className="w-px h-3 bg-border-dim" />
+                    <span className="text-cyan/60">11 AI agents</span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
 

@@ -78,7 +78,7 @@ export function StatsBar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.25 }}
-          className="max-w-5xl mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 py-6 px-6"
+          className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 py-4 sm:py-6 px-4 sm:px-6"
         >
           {metrics.map((metric, i) => (
             <MetricCell key={metric.label} metric={metric} delay={i * 0.06} isEngineer={viewMode === "engineer"} />

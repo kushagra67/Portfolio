@@ -122,7 +122,7 @@ export default function Home() {
       <HudOverlay />
 
       {/* Hero — cinematic staged reveal with parallax depth */}
-      <header className="relative z-10 flex flex-col items-center justify-center min-h-[65vh] px-6 text-center overflow-hidden">
+      <header className="relative z-10 flex flex-col items-center justify-center min-h-[50vh] sm:min-h-[65vh] px-4 sm:px-6 text-center overflow-hidden">
 
         {/* Volumetric light beam behind sphere */}
         <div
@@ -140,9 +140,11 @@ export default function Home() {
         <div
           className="absolute inset-0 flex items-center justify-center parallax-core"
         >
-          <Suspense fallback={null}>
-            <NeuralCore />
-          </Suspense>
+          <div className="w-[250px] h-[250px] sm:w-full sm:h-full sm:absolute sm:inset-0">
+            <Suspense fallback={null}>
+              <NeuralCore />
+            </Suspense>
+          </div>
         </div>
 
         {/* Staged text reveal — shallower parallax layer */}
@@ -188,10 +190,10 @@ export default function Home() {
             <AnimatePresence mode="wait">
               {viewMode === "engineer" ? (
                 <motion.div key="eng" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
-                  <p className="text-sm sm:text-base font-mono text-green/40 leading-relaxed mb-8 max-w-xl mx-auto tracking-wide">
+                  <p className="text-xs sm:text-base font-mono text-green/40 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto tracking-wide">
                     Python · FastAPI · LangGraph · RAG · YOLOv10 · Kafka · ClickHouse · Docker · K8s
                   </p>
-                  <div className="flex items-center justify-center gap-6 text-[11px] font-mono tracking-wider text-foreground/25">
+                  <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono tracking-wider text-foreground/25 flex-wrap">
                     <span>{PROFILE.location}</span>
                     <span className="w-px h-3 bg-border-dim" />
                     <span className="text-green/50">distributed systems</span>
@@ -201,10 +203,10 @@ export default function Home() {
                 </motion.div>
               ) : (
                 <motion.div key="rec" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
-                  <p className="text-base sm:text-lg text-foreground/40 leading-relaxed mb-8 max-w-xl mx-auto">
+                  <p className="text-sm sm:text-lg text-foreground/40 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto">
                     Building production AI systems across EdTech, AdTech, Fleet Intelligence, Defense &amp; Conversational AI.
                   </p>
-                  <div className="flex items-center justify-center gap-6 text-[11px] font-mono tracking-wider text-foreground/25">
+                  <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono tracking-wider text-foreground/25 flex-wrap">
                     <span>{PROFILE.location}</span>
                     <span className="w-px h-3 bg-border-dim" />
                     <span className="text-cyan/60">5 production systems</span>
@@ -325,7 +327,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
-            className="fixed bottom-6 right-6 z-50 flex flex-col gap-2"
+            className="fixed bottom-14 sm:bottom-6 right-3 sm:right-6 z-50 flex flex-col gap-2 max-w-[calc(100vw-24px)] sm:max-w-none"
           >
             <a
               href={PROFILE.resumePath}

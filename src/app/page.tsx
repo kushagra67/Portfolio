@@ -27,32 +27,6 @@ const NeuralCore = lazy(() =>
   import("@/components/hero/NeuralCore").then((mod) => ({ default: mod.NeuralCore }))
 );
 
-// Parallax hook — returns smooth offset based on mouse position
-function useParallax(intensity: number = 0.02) {
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    let rafId: number;
-    const handleMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        const cx = window.innerWidth / 2;
-        const cy = window.innerHeight / 2;
-        setOffset({
-          x: (e.clientX - cx) * intensity,
-          y: (e.clientY - cy) * intensity,
-        });
-      });
-    };
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(rafId);
-    };
-  }, [intensity]);
-
-  return offset;
-}
 
 export default function Home() {
   const [booted, setBooted] = useState(false);
@@ -63,20 +37,26 @@ export default function Home() {
   const missionBriefingOpen = useSimulation((s) => s.missionBriefingOpen);
   const showDossierCTA = useSimulation((s) => s.showDossierCTA);
   const showCTA = useSimulation((s) => s.showCTA);
-  const parallax = useParallax(0.015);
 
   const handleBoot = useCallback(() => {
     setBooted(true);
   }, []);
 
-  // Cursor-reactive light gradient — CSS only, no React state
+  // Cursor-reactive light + parallax — pure CSS vars, zero React re-renders
   useEffect(() => {
     let rafId: number;
     const handleMouseMove = (e: MouseEvent) => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        document.documentElement.style.setProperty("--cursor-x", `${e.clientX}px`);
-        document.documentElement.style.setProperty("--cursor-y", `${e.clientY}px`);
+        const el = document.documentElement;
+        el.style.setProperty("--cursor-x", `${e.clientX}px`);
+        el.style.setProperty("--cursor-y", `${e.clientY}px`);
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const px = (e.clientX - cx) * 0.015;
+        const py = (e.clientY - cy) * 0.015;
+        el.style.setProperty("--px", `${px}px`);
+        el.style.setProperty("--py", `${py}px`);
       });
     };
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -138,7 +118,6 @@ export default function Home() {
   return (
     <div className={`min-h-screen bg-background cursor-light pb-8 ${easterEggPulse ? "animate-visual-pulse" : ""} ${architectMode ? "architect-mode" : ""}`}>
       <ScanLine />
-      {viewMode === "engineer" && <ParticleGrid />}
       <AudioToggle />
       <HudOverlay />
 
@@ -147,8 +126,7 @@ export default function Home() {
 
         {/* Volumetric light beam behind sphere */}
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          style={{ transform: `translate(${parallax.x * 0.5}px, ${parallax.y * 0.5}px)` }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none parallax-light"
         >
           <div
             className="w-[300px] h-[500px] animate-breathe"
@@ -160,8 +138,7 @@ export default function Home() {
 
         {/* 3D core — deeper parallax layer */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ transform: `translate(${parallax.x * 2}px, ${parallax.y * 2}px)` }}
+          className="absolute inset-0 flex items-center justify-center parallax-core"
         >
           <Suspense fallback={null}>
             <NeuralCore />
@@ -170,8 +147,7 @@ export default function Home() {
 
         {/* Staged text reveal — shallower parallax layer */}
         <div
-          className="relative z-10 max-w-2xl"
-          style={{ transform: `translate(${parallax.x * -0.5}px, ${parallax.y * -0.5}px)` }}
+          className="relative z-10 max-w-2xl parallax-text"
         >
           {/* Stage 1: Grid Online */}
           <motion.p

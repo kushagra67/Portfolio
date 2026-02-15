@@ -99,6 +99,11 @@ body {
   100% { transform: translateX(100vw); }
 }
 
+/* ── Parallax via CSS vars (zero React re-renders) ── */
+.parallax-light { transform: translate(calc(var(--px, 0) * 0.5), calc(var(--py, 0) * 0.5)); will-change: transform; }
+.parallax-core { transform: translate(calc(var(--px, 0) * 2), calc(var(--py, 0) * 2)); will-change: transform; }
+.parallax-text { transform: translate(calc(var(--px, 0) * -0.5), calc(var(--py, 0) * -0.5)); will-change: transform; }
+
 /* ── Spin (GPU-composited rotation) ── */
 @keyframes spin {
   from { transform: rotate(0deg); }

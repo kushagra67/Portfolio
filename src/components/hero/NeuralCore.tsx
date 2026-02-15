@@ -14,7 +14,7 @@ function CoreSphere() {
   const powerLevel = useSimulation((s) => s.powerLevel);
 
   const particlePositions = useMemo(() => {
-    const count = 200;
+    const count = 60;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const theta = Math.random() * Math.PI * 2;
@@ -29,7 +29,7 @@ function CoreSphere() {
 
   const connectionPositions = useMemo(() => {
     const lines: number[] = [];
-    const count = 60;
+    const count = 20;
     for (let i = 0; i < count; i++) {
       const theta1 = Math.random() * Math.PI * 2;
       const phi1 = Math.acos(2 * Math.random() - 1);
@@ -111,7 +111,7 @@ function CoreSphere() {
 
       {/* Glow sphere */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[1.6, 32, 32]} />
+        <sphereGeometry args={[1.6, 16, 16]} />
         <meshBasicMaterial
           color={new THREE.Color(0, 0.94, 1)}
           transparent
@@ -156,9 +156,9 @@ export function NeuralCore() {
     <div className="absolute inset-0 z-0">
       <Canvas
         camera={{ position: [0, 0, 4], fov: 50 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1]}
         gl={{
-          antialias: true,
+          antialias: false,
           alpha: true,
           powerPreference: "high-performance",
         }}

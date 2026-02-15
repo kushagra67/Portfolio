@@ -29,7 +29,7 @@ export function SystemStatusBar() {
       initial={{ y: 40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.4 }}
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-border-dim bg-background/90 backdrop-blur-md"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-border-dim bg-background/95"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-1.5">
         {/* Left: core status */}

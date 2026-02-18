@@ -516,7 +516,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "datavedam",
     role: "Founding Engineer & AI Systems Architect",
-    company: "Datavedam (Self-Founded)",
+    company: "Datavedam",
     location: "Bangalore, India",
     period: "2025 — Present",
     type: "founding",
@@ -537,7 +537,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     id: "nineleaps",
-    role: "Software Engineering Intern",
+    role: "Data Analyst Intern",
     company: "Nineleaps Technology Solutions",
     location: "Bangalore, India",
     period: "2024 — 2025",

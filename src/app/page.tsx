@@ -191,27 +191,27 @@ export default function Home() {
               {viewMode === "engineer" ? (
                 <motion.div key="eng" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
                   <p className="text-xs sm:text-base font-mono text-green/40 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto tracking-wide">
-                    Python · FastAPI · LangGraph · RAG · YOLOv10 · Kafka · ClickHouse · Docker · K8s
+                    Python · FastAPI · LangGraph · RAG · PyTorch · LoRA · Kafka · pgvector · Docker · K8s
                   </p>
                   <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono tracking-wider text-foreground/25 flex-wrap">
                     <span>{PROFILE.location}</span>
                     <span className="w-px h-3 bg-border-dim" />
-                    <span className="text-green/50">distributed systems</span>
+                    <span className="text-green/50">9 production systems</span>
                     <span className="w-px h-3 bg-border-dim" />
-                    <span className="text-green/50">real-time ML</span>
+                    <span className="text-green/50">knowledge distillation</span>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div key="rec" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
                   <p className="text-sm sm:text-lg text-foreground/40 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto">
-                    Building production AI systems across EdTech, AdTech, Fleet Intelligence, Defense &amp; Conversational AI.
+                    Building 9 production AI systems across EdTech, AdTech, Fleet Intelligence, Defense, HealthTech, Auth &amp; Conversational AI.
                   </p>
                   <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono tracking-wider text-foreground/25 flex-wrap">
                     <span>{PROFILE.location}</span>
                     <span className="w-px h-3 bg-border-dim" />
-                    <span className="text-cyan/60">5 production systems</span>
+                    <span className="text-cyan/60">9 production systems</span>
                     <span className="w-px h-3 bg-border-dim" />
-                    <span className="text-cyan/60">11 AI agents</span>
+                    <span className="text-cyan/60">16 AI agents</span>
                   </div>
                 </motion.div>
               )}

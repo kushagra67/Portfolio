@@ -11,21 +11,21 @@ interface MetricItem {
 }
 
 const RECRUITER_METRICS: MetricItem[] = [
-  { value: 5, suffix: "", label: "Production Systems" },
-  { value: 11, suffix: "", label: "AI Agents" },
-  { value: 6, suffix: "", label: "Microservices" },
+  { value: 9, suffix: "", label: "Production Systems" },
+  { value: 16, suffix: "", label: "AI Agents" },
+  { value: 9, suffix: "", label: "Microservices" },
   { value: 1, suffix: "M+", label: "Data Rows" },
-  { value: 35, suffix: "%", label: "Perf Optimization" },
-  { value: 95, suffix: "%", label: "Automation Precision" },
+  { value: 8, suffix: "", label: "Domains" },
+  { value: 97, suffix: "%", label: "Threat Accuracy" },
 ];
 
 const ENGINEER_METRICS: MetricItem[] = [
-  { value: 12, suffix: "+", label: "Python / FastAPI" },
-  { value: 11, suffix: "", label: "LangGraph Agents" },
-  { value: 4, suffix: "", label: "RAG Pipelines" },
-  { value: 6, suffix: "", label: "Docker / K8s" },
-  { value: 3, suffix: "", label: "Kafka Streams" },
-  { value: 2, suffix: "", label: "Edge ML Models" },
+  { value: 16, suffix: "", label: "LangGraph Agents" },
+  { value: 5, suffix: "", label: "RAG Pipelines" },
+  { value: 9, suffix: "", label: "Docker Services" },
+  { value: 20, suffix: "ms", label: "Hybrid Search" },
+  { value: 3, suffix: "", label: "Edge ML Models" },
+  { value: 14, suffix: "", label: "DB Tables (BroAI)" },
 ];
 
 function useCountUp(target: number, duration: number = 1.8) {

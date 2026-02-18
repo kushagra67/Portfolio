@@ -86,16 +86,22 @@ export function ContactSection() {
 
         <HudFrame title="QUICK ACTIONS" glowColor="#00ff88" className="p-6" animate={false}>
           <div className="space-y-3">
-            <a
-              href={PROFILE.resumePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Download Kushagra's resume PDF"
-              className="block w-full py-3 px-4 border border-cyan/30 text-cyan font-mono text-sm tracking-[0.15em] text-center
-                       hover:bg-cyan/10 hover:border-cyan/60 transition-colors duration-200"
-            >
-              DOWNLOAD TECHNICAL DOSSIER
-            </a>
+            <div className="space-y-1.5">
+              <p className="text-[10px] font-mono tracking-[0.2em] text-foreground/30 uppercase text-center mb-2">Download Resume By Role</p>
+              {PROFILE.resumes.map((r) => (
+                <a
+                  key={r.role}
+                  href={r.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Download ${r.role} resume`}
+                  className="block w-full py-2.5 px-4 border border-cyan/20 text-cyan/80 font-mono text-xs tracking-[0.15em] text-center
+                           hover:bg-cyan/10 hover:border-cyan/50 hover:text-cyan transition-colors duration-200"
+                >
+                  {r.role.toUpperCase()}
+                </a>
+              ))}
+            </div>
             <button
               onClick={handleScheduleCall}
               aria-label="Call Kushagra to schedule a meeting"

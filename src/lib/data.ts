@@ -26,7 +26,12 @@ export const PROFILE = {
   whatsapp: "https://wa.me/918955531225",
   github: "https://github.com/kushagra67",
   linkedin: "https://www.linkedin.com/in/kushagra-singhal20/",
-  resumePath: "/Kushagra_Resume.pdf",
+  resumePath: "/AI_engineer.pdf",
+  resumes: [
+    { role: "AI Engineer", path: "/AI_engineer.pdf" },
+    { role: "Backend Engineer", path: "/Backend_engineer.pdf" },
+    { role: "DevOps Engineer", path: "/Devops_engineer.pdf" },
+  ],
 };
 
 export interface Mission {
@@ -500,6 +505,9 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   WhatsApp: wa.me/918955531225
   GitHub:   github.com/kushagra67
   LinkedIn: linkedin.com/in/kushagra-singhal20
-  Resume:   /Kushagra_Resume.pdf
+  Resume:
+    → AI Engineer       /AI_engineer.pdf
+    → Backend Engineer  /Backend_engineer.pdf
+    → DevOps Engineer   /Devops_engineer.pdf
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 };

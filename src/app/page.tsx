@@ -329,16 +329,23 @@ export default function Home() {
             exit={{ opacity: 0, y: 16 }}
             className="fixed bottom-14 sm:bottom-6 right-3 sm:right-6 z-50 flex flex-col gap-2 max-w-[calc(100vw-24px)] sm:max-w-none"
           >
-            <a
-              href={PROFILE.resumePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 bg-surface/95 border border-cyan/20
-                       hover:bg-cyan/5 hover:border-cyan/40 transition-colors duration-200 group"
-            >
-              <span className="text-xs font-mono text-cyan/80 tracking-wider">Download Technical Dossier</span>
-              <span className="text-cyan/60 group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </a>
+            <div className="bg-surface/95 border border-cyan/20 p-3">
+              <p className="text-[9px] font-mono tracking-[0.2em] text-foreground/30 uppercase mb-2">Download Resume</p>
+              <div className="flex gap-1.5">
+                {PROFILE.resumes.map((r) => (
+                  <a
+                    key={r.role}
+                    href={r.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-2 py-2 border border-cyan/15 text-[10px] font-mono text-cyan/70 text-center
+                             hover:bg-cyan/10 hover:border-cyan/40 hover:text-cyan transition-colors duration-200"
+                  >
+                    {r.role.split(" ")[0]}
+                  </a>
+                ))}
+              </div>
+            </div>
             <div className="flex gap-2">
               <a
                 href={`mailto:${PROFILE.email}`}

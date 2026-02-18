@@ -265,8 +265,30 @@ export function MissionBriefing({ mission }: MissionBriefingProps) {
         </HudFrame>
       </motion.div>
 
+      {/* Key Metrics */}
+      {mission.keyMetrics && mission.keyMetrics.length > 0 && (
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="mt-6">
+          <HudFrame title="KEY METRICS" glowColor={mission.color} className="p-5" animate={false}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {mission.keyMetrics.map((metric, i) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + i * 0.06 }}
+                  className="flex flex-col gap-1 p-3 border border-border-dim bg-surface/40"
+                >
+                  <span className="text-[9px] font-mono tracking-[0.15em] text-foreground/25 uppercase">{metric.label}</span>
+                  <span className="text-sm font-mono font-bold" style={{ color: mission.color }}>{metric.value}</span>
+                </motion.div>
+              ))}
+            </div>
+          </HudFrame>
+        </motion.div>
+      )}
+
       {/* Impact */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-6">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }} className="mt-6">
         <HudFrame title="MISSION IMPACT" glowColor={mission.color} className="p-5" animate={false}>
           <div className="space-y-3">
             {mission.impact.map((item, i) => (
@@ -284,6 +306,31 @@ export function MissionBriefing({ mission }: MissionBriefingProps) {
           </div>
         </HudFrame>
       </motion.div>
+
+      {/* Deep Dive Highlights */}
+      {mission.highlights && mission.highlights.length > 0 && (
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="mt-6">
+          <HudFrame title="DEEP DIVE" glowColor={mission.color} className="p-5" animate={false}>
+            <p className="text-[10px] font-mono text-foreground/20 mb-4 tracking-widest uppercase">
+              Implementation Details
+            </p>
+            <div className="space-y-4">
+              {mission.highlights.map((highlight, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.85 + i * 0.08 }}
+                  className="flex items-start gap-3 p-3 border-l-2 bg-surface/30"
+                  style={{ borderLeftColor: `${mission.color}44` }}
+                >
+                  <span className="text-xs sm:text-sm font-mono text-foreground/50 leading-relaxed">{highlight}</span>
+                </motion.div>
+              ))}
+            </div>
+          </HudFrame>
+        </motion.div>
+      )}
     </motion.div>
   );
 }

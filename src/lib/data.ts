@@ -48,6 +48,8 @@ export interface Mission {
   architecture: string;
   techStack: string[];
   impact: string[];
+  highlights: string[];
+  keyMetrics: { label: string; value: string }[];
   color: string;
   icon: string;
   architectureNodes: ArchNode[];
@@ -84,6 +86,22 @@ export const MISSIONS: Mission[] = [
       "3-level decision governance (Autonomous → Advisory → Enforcement)",
       "Cross-platform: Web + Android (Kotlin) + iOS (Swift)"
     ],
+    highlights: [
+      "Virtual Principal AI autonomously manages institutional ops — from attendance to CBSE compliance",
+      "RAG pipeline ingests PDF/DOCX CBSE documents → chunks → embeds with all-MiniLM-L6-v2 → stores in pgvector for semantic search",
+      "OCR grading: scanned answer sheets → text extraction → AI evaluation → human-in-the-loop approval workflow",
+      "MCP tool layer lets agents invoke ERP actions (create notification, file compliance, update attendance) with audit trails",
+      "Wearable integration: Android Wear OS companion app for teacher attendance and alerts",
+      "Keycloak SSO via PramanVedam — single sign-on across all Datavedam services with realm-based tenant isolation",
+    ],
+    keyMetrics: [
+      { label: "AI Agents", value: "5" },
+      { label: "Decision Levels", value: "3" },
+      { label: "Platforms", value: "Web + Android + iOS" },
+      { label: "Embedding Model", value: "MiniLM-L6-v2" },
+      { label: "Auth", value: "Keycloak SSO" },
+      { label: "RAG Chunks", value: "384-dim vectors" },
+    ],
     color: "#00d4ff",
     icon: "🎓",
     architectureNodes: [
@@ -116,6 +134,22 @@ export const MISSIONS: Mission[] = [
       "ML bidding optimizer with anomaly detection and churn prediction",
       "Simulation engine for budget forecasting and scenario analysis",
       "A/B testing framework with automated creative performance ranking"
+    ],
+    highlights: [
+      "Brand DNA service extracts brand voice, tone, and visual identity from existing assets for AI-consistent creative generation",
+      "Ad Generation pipeline: brief → Gemini creative AI → multi-format output (static, video, carousel) → performance prediction",
+      "Simulation framework runs Monte Carlo budget allocation across channels with what-if scenario analysis",
+      "Competitive intelligence module tracks competitor ad spend, creative strategies, and market positioning",
+      "Cold-start strategy: synthetic data generation for new advertisers with zero historical performance data",
+      "CQRS + event sourcing for campaign state management — full audit trail of every campaign mutation",
+    ],
+    keyMetrics: [
+      { label: "Microservices", value: "6" },
+      { label: "Ad Platforms", value: "Google · FB · LinkedIn · TikTok" },
+      { label: "Ingestion Latency", value: "<5s" },
+      { label: "API p95", value: "<200ms" },
+      { label: "Data Layer", value: "ClickHouse + TimescaleDB" },
+      { label: "ML Pipeline", value: "MLflow + Airflow" },
     ],
     color: "#a855f7",
     icon: "📡",
@@ -152,6 +186,22 @@ export const MISSIONS: Mission[] = [
       "Geofenced zone management with automated alert triggers",
       "Predictive maintenance reducing unplanned downtime"
     ],
+    highlights: [
+      "IoT dashboard: vehicle list → detail view with live sensor telemetry, trip history, and maintenance schedule",
+      "Zone management: create/edit geofenced zones on Leaflet maps with entry/exit event triggers and alert rules",
+      "Sensor monitoring: temperature, fuel, tire pressure, engine RPM with threshold-based anomaly alerts",
+      "Alert system: severity levels (info/warning/critical) with real-time push via WebSocket and notification history",
+      "Reports module: fleet utilization, driver behavior scoring, fuel consumption analytics with Recharts visualizations",
+      "DMS agent uses MediaPipe BlazeFace + iris tracking for drowsiness detection — triggers cabin alert + fleet notification",
+    ],
+    keyMetrics: [
+      { label: "AI Agents", value: "11" },
+      { label: "Dashboard Pages", value: "10+" },
+      { label: "Map Engine", value: "Leaflet" },
+      { label: "Live Feed", value: "WebSocket" },
+      { label: "Charts", value: "Recharts" },
+      { label: "DMS Model", value: "MediaPipe BlazeFace" },
+    ],
     color: "#22c55e",
     icon: "🚛",
     architectureNodes: [
@@ -184,6 +234,18 @@ export const MISSIONS: Mission[] = [
       "Threat classification with 97%+ accuracy",
       "Edge-deployable architecture"
     ],
+    highlights: [
+      "YOLOv10 trained on custom drone dataset — detects commercial and military-grade UAVs in varied weather and lighting",
+      "Dynamic geofencing: define restricted zones on map, system auto-triggers alerts on boundary violation",
+      "Threat classification pipeline: detection → tracking → identification → threat level assignment → response protocol",
+      "Edge deployment: ONNX-optimized model runs on Jetson Nano for field deployment without cloud dependency",
+    ],
+    keyMetrics: [
+      { label: "Inference", value: "<100ms" },
+      { label: "Accuracy", value: "97%+" },
+      { label: "Model", value: "YOLOv10" },
+      { label: "Edge Target", value: "Jetson Nano" },
+    ],
     color: "#ef4444",
     icon: "🛡️",
     architectureNodes: [
@@ -213,6 +275,18 @@ export const MISSIONS: Mission[] = [
       "Contextual memory with Redis-backed sessions",
       "Tool-use capabilities via LangChain agents",
       "Configurable personas per deployment"
+    ],
+    highlights: [
+      "Unified conversation engine: single NLP pipeline serves WhatsApp, Telegram, and Discord via platform adapters",
+      "Context memory with Redis-backed sessions — remembers conversation history across interactions",
+      "Tool-use via LangChain agents: bot can query APIs, search knowledge bases, and perform actions on behalf of users",
+      "Configurable personas: adjust tone, knowledge domain, and response style per deployment without code changes",
+    ],
+    keyMetrics: [
+      { label: "Platforms", value: "3 (WA · TG · Discord)" },
+      { label: "Memory", value: "Redis sessions" },
+      { label: "Agent Framework", value: "LangChain" },
+      { label: "Personas", value: "Configurable" },
     ],
     color: "#f59e0b",
     icon: "🤖",
@@ -248,6 +322,22 @@ export const MISSIONS: Mission[] = [
       "Curriculum learning with progressive difficulty scheduling",
       "Model registry with versioning, comparison, and promotion"
     ],
+    highlights: [
+      "Configuration-over-code: every knob (domain, model, hyper-params, serving) lives in YAML — zero Python changes to add a new domain",
+      "Adapter pattern: all model providers (OpenAI, Anthropic, HuggingFace local, GGUF, vLLM) implement a single ModelAdapter ABC",
+      "DataBlender: 4 blend strategies (fixed_ratio, dynamic, difficulty_mixing, subject_area) with quality filtering and domain balancing",
+      "TeacherGenerator: prompt strategies (direct_answer, step_by_step, classification) with batch generation, caching, and checkpointing",
+      "Layered config: base → environment overlay (local/cloud/edge) → CLI args → runtime overrides. Same pipeline runs laptop → A100 → Jetson",
+      "MetricsCollector: Prometheus gauges, counters, histograms for request latency, tokens generated, GPU memory/utilization, training loss",
+    ],
+    keyMetrics: [
+      { label: "Teachers", value: "GPT-4o · Claude · Llama 70B" },
+      { label: "Students", value: "Phi-3 · Qwen 1.5B · Gemma 2B" },
+      { label: "Export", value: "SafeTensors · GGUF · ONNX" },
+      { label: "Serving", value: "FastAPI + vLLM" },
+      { label: "Registry", value: "MLflow sync" },
+      { label: "Config", value: "YAML-driven" },
+    ],
     color: "#f97316",
     icon: "🧬",
     architectureNodes: [
@@ -281,6 +371,22 @@ export const MISSIONS: Mission[] = [
       "Bilingual support: English + Malayalam with IndicTrans2 translation",
       "LangGraph workflows: 5 approved paths, max 7 turns, audit logging",
       "PII protection with synthetic masking + prompt injection defense"
+    ],
+    highlights: [
+      "14+ database tables: agent_memory, memory_relations, pii_mappings, outbox_events, conversation_buffer, memory_summaries, ingest_documents, ingest_chunks, document_trees, chat_sessions, workflow_sessions, workflow_audit_log",
+      "4 index types: HNSW (vectors), GIN (JSONB/text), B-tree (timestamps), tsvector (full-text) — all in single PostgreSQL",
+      "Transactional outbox pattern with idempotency keys and automatic retry logic — no message loss during crashes",
+      "Document ingestion: dual-path architecture (vectorless + vector RAG) with language-aware routing and hierarchical document trees",
+      "Template-driven responses: 14 bilingual YAML templates with human-written empathy intros — zero LLM text generation for responses",
+      "Multi-turn workflow engine: LangGraph state machines compiled from human-reviewed YAML. 5 approved workflows, max 7 turns, 72h session expiry",
+    ],
+    keyMetrics: [
+      { label: "DB Tables", value: "14+" },
+      { label: "Hybrid Search", value: "<20ms" },
+      { label: "Cost Reduction", value: "60%" },
+      { label: "Intents", value: "18 high-risk" },
+      { label: "Languages", value: "EN + ML" },
+      { label: "Guardrail", value: "≥95% similarity" },
     ],
     color: "#06b6d4",
     icon: "🧠",
@@ -316,6 +422,21 @@ export const MISSIONS: Mission[] = [
       "CPU-only inference — no GPU required, runs on basic devices",
       "Edge-deployable: designed for Raspberry Pi in rural field use"
     ],
+    highlights: [
+      "Shooting performance analytics: 4 demo sessions — Before (72/100), After 3-month coaching (92/100), World Champion benchmark (96/100), Youth prospect (58/100)",
+      "COG (Center of Gravity) tracking: hip joint midpoint variance over time, scoring 0-100 with target >75",
+      "Competition benchmarking: gap analysis vs world champion (only 4 points), projected ROI 900-3000% for state sports programs",
+      "WhatsApp-style chat interface for AI coaching — familiar UX for athletes in rural areas",
+      "Offline-first design: works without internet, runs on Raspberry Pi 4, supports Hindi/Bhojpuri for Bihar athletes",
+    ],
+    keyMetrics: [
+      { label: "FPS", value: "30" },
+      { label: "Latency", value: "<100ms" },
+      { label: "Accuracy", value: "85-95%" },
+      { label: "RAM", value: "~2GB" },
+      { label: "Languages", value: "Hindi + English" },
+      { label: "Edge Target", value: "Raspberry Pi 4" },
+    ],
     color: "#10b981",
     icon: "🏹",
     architectureNodes: [
@@ -349,6 +470,22 @@ export const MISSIONS: Mission[] = [
       "Dynamic tenant provisioning via API (single + multi-tenant modes)",
       "Docker-based deployment with PostgreSQL 15 backend"
     ],
+    highlights: [
+      "Realm-based multi-tenancy: each tenant gets isolated Keycloak realm with own users, roles, and identity providers",
+      "Client registration API: dynamic OAuth2 client creation for new services joining the Datavedam ecosystem",
+      "Token lifecycle: 5-minute access tokens, 10-hour refresh tokens, configurable per realm",
+      "Traefik reverse proxy: path-based routing to Keycloak + backend, automatic SSL termination, load balancing",
+      "Custom Keycloak themes for branded login/signup pages per tenant",
+      "OIDC discovery proxy: FastAPI endpoint proxies .well-known/openid-configuration for simplified client integration",
+    ],
+    keyMetrics: [
+      { label: "Auth Protocol", value: "OAuth 2.0 / OIDC" },
+      { label: "Tenancy", value: "Multi-realm" },
+      { label: "Access Token", value: "5 min" },
+      { label: "Refresh Token", value: "10 hr" },
+      { label: "Proxy", value: "Traefik" },
+      { label: "Services Secured", value: "3+" },
+    ],
     color: "#8b5cf6",
     icon: "🔐",
     architectureNodes: [
@@ -359,6 +496,63 @@ export const MISSIONS: Mission[] = [
       { id: "postgres", label: "PostgreSQL", x: 70, y: 50, type: "database", connections: ["admin"] },
       { id: "admin", label: "Admin UI", x: 90, y: 50, type: "output", connections: [] },
     ],
+  },
+];
+
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  type: "fulltime" | "founding" | "internship" | "freelance";
+  description: string;
+  achievements: string[];
+  techStack: string[];
+  color: string;
+}
+
+export const EXPERIENCES: Experience[] = [
+  {
+    id: "datavedam",
+    role: "Founding Engineer & AI Systems Architect",
+    company: "Datavedam (Self-Founded)",
+    location: "Bangalore, India",
+    period: "2025 — Present",
+    type: "founding",
+    description: "Architecting and shipping the entire Datavedam ecosystem — 9 production AI systems spanning EdTech, AdTech, Fleet Intelligence, Defense, HealthTech, Auth, Knowledge Distillation, and Conversational AI. Leading end-to-end development from system design to deployment.",
+    achievements: [
+      "Built ShikshaVedam: AI-first school ERP with Virtual Principal orchestrating 5 agents, OCR grading, RAG over CBSE regulations, cross-platform (Web + Android + iOS)",
+      "Shipped PracharVedam: 6-microservice ad analytics platform with Kafka streams, ClickHouse real-time analytics, ML bidding optimizer, and integrations across Google/Facebook/LinkedIn/TikTok",
+      "Deployed PravahVedam: 11 AI agents for fleet intelligence — V2V communication, DMS (MediaPipe), predictive maintenance, IoT dashboard with Leaflet maps and WebSocket live feeds",
+      "Developed AstraVedam: YOLOv10 drone detection with 97%+ accuracy, sub-100ms inference, dynamic geofencing, edge-deployable on Jetson Nano",
+      "Created BodhiVedam: YAML-driven knowledge distillation platform — GPT-4o/Claude/Llama 70B → Phi-3/Qwen 1.5B via LoRA/QLoRA, export to GGUF for edge deployment",
+      "Built BroAI: converged cognitive architecture replacing 3 databases with single PostgreSQL (pgvector + Apache AGE). Sub-20ms hybrid search, zero-hallucination NLP, bilingual EN/ML support",
+      "Deployed LakshyaVedam: biomechanical AI coach for Bihar sports program — MediaPipe pose analysis, stability scoring, bilingual coaching, designed for Raspberry Pi edge deployment",
+      "Shipped PramanVedam: multi-tenant Keycloak auth with Traefik proxy, SSO, RBAC — securing the entire ecosystem",
+      "Launched Vebot: multi-platform conversational AI across WhatsApp, Telegram, Discord with LangChain agents and contextual memory",
+    ],
+    techStack: ["Python", "FastAPI", "LangGraph", "RAG", "PyTorch", "LoRA", "PostgreSQL", "pgvector", "Kafka", "ClickHouse", "Docker", "Kubernetes", "React", "Next.js", "Keycloak"],
+    color: "#00d4ff",
+  },
+  {
+    id: "nineleaps",
+    role: "Software Engineering Intern",
+    company: "Nineleaps Technology Solutions",
+    location: "Bangalore, India",
+    period: "2024 — 2025",
+    type: "internship",
+    description: "Built data engineering pipelines and AI-powered developer tools at a product engineering company. Focused on ETL automation, BI reporting, CI/CD infrastructure, and an innovative LLM-based Git triage agent.",
+    achievements: [
+      "Built ETL pipelines processing 1M+ rows with automated data validation, transformation, and loading into analytics warehouses",
+      "Developed BI dashboards for executive reporting — real-time KPIs, trend analysis, and anomaly detection across product metrics",
+      "Implemented CI/CD pipelines with automated testing, deployment gates, and rollback mechanisms",
+      "Created an LLM agent for Git triage: auto-classifies issues, suggests assignees, and drafts response templates — achieving 95% SQL precision",
+      "Delivered 35% performance improvement through query optimization, caching strategies, and infrastructure tuning",
+      "Improved system reliability by 15% uptime increase through monitoring, alerting, and incident response automation",
+    ],
+    techStack: ["Python", "SQL", "ETL", "BI Dashboards", "CI/CD", "LLM", "Git", "Jira", "Confluence", "Scrum"],
+    color: "#22c55e",
   },
 ];
 

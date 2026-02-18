@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export type ClearanceLevel = "PUBLIC" | "CONFIDENTIAL" | "SECRET" | "TOP_SECRET" | "OMEGA";
-export type SystemSection = "missions" | "skills" | "console" | "timeline" | "contact" | "agents" | "impact" | "architecture";
+export type SystemSection = "missions" | "skills" | "console" | "timeline" | "contact" | "agents" | "impact" | "architecture" | "experience";
 export type ViewMode = "recruiter" | "engineer";
 
 interface SimulationState {

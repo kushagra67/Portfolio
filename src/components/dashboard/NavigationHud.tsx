@@ -5,6 +5,7 @@ import { useSimulation, type SystemSection, type ViewMode } from "@/store/useSim
 
 const NAV_ITEMS: { id: SystemSection; label: string }[] = [
   { id: "missions", label: "Systems" },
+  { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "agents", label: "Agents" },
   { id: "impact", label: "Impact" },

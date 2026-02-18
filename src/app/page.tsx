@@ -19,6 +19,7 @@ import { ContactSection } from "@/components/contact/ContactSection";
 import { AgentVisualization } from "@/components/advanced/AgentVisualization";
 import { ImpactMetrics } from "@/components/advanced/ImpactMetrics";
 import { ArchitectureDeepDive } from "@/components/advanced/ArchitectureDeepDive";
+import { ExperienceSection } from "@/components/experience/ExperienceSection";
 import { PROFILE, MISSIONS } from "@/lib/data";
 import { useSimulation } from "@/store/useSimulation";
 
@@ -273,6 +274,12 @@ export default function Home() {
                   <MissionCard key={mission.id} mission={mission} index={i} />
                 ))}
               </div>
+            </motion.div>
+          )}
+
+          {!missionBriefingOpen && activeSection === "experience" && (
+            <motion.div key="experience" initial={{ opacity: 0, y: 16, scale: 0.97, filter: "blur(4px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: -12, scale: 0.98 }} transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}>
+              <ExperienceSection />
             </motion.div>
           )}
 

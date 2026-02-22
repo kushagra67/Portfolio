@@ -26,11 +26,11 @@ export const PROFILE = {
   whatsapp: "https://wa.me/918955531225",
   github: "https://github.com/kushagra67",
   linkedin: "https://www.linkedin.com/in/kushagra-singhal20/",
-  resumePath: "/AI_engineer.pdf",
+  resumePath: "/AI_Engineer_CV.pdf",
   resumes: [
-    { role: "AI Engineer", path: "/AI_engineer.pdf" },
-    { role: "Backend Engineer", path: "/Backend_engineer.pdf" },
-    { role: "DevOps Engineer", path: "/Devops_engineer.pdf" },
+    { role: "AI Engineer", path: "/AI_Engineer_CV.pdf" },
+    { role: "Backend Engineer", path: "/Backend_CV.pdf" },
+    { role: "DevOps Engineer", path: "/Devops_cv.pdf" },
   ],
 };
 
@@ -888,8 +888,8 @@ export const TERMINAL_COMMANDS: Record<string, string> = {
   GitHub:   github.com/kushagra67
   LinkedIn: linkedin.com/in/kushagra-singhal20
   Resume:
-    → AI Engineer       /AI_engineer.pdf
-    → Backend Engineer  /Backend_engineer.pdf
-    → DevOps Engineer   /Devops_engineer.pdf
+    → AI Engineer       /AI_Engineer_CV.pdf
+    → Backend Engineer  /Backend_CV.pdf
+    → DevOps Engineer   /Devops_cv.pdf
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 };
